@@ -91,6 +91,7 @@ namespace Assignment1
                 "Antal Ä: 1",
                 "Antal Ö: 4"
             }, console.Lines);
+            console.Dispose();
         }
 
         [TestMethod]
