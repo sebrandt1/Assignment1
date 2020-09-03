@@ -63,12 +63,6 @@ namespace Assignment1
             }
 
             //Output
-            /*
-            Console.WriteLine(Language());
-            Console.WriteLine("Antal svenska bokstäver: " + TotalCount());
-            Console.WriteLine("Antal Å: " + åCount);
-            Console.WriteLine("Antal Ä: " + äCount);
-            Console.WriteLine("Antal Ö: " + öCount);*/
             Console.WriteLine("{0}Antal svenska bokstäver: {1}Antal Å: {2}Antal Ä: {3}Antal Ö: {4}", new object[]
             {
                     Language() + Environment.NewLine,
