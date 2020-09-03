@@ -63,14 +63,21 @@ namespace Assignment1
             }
 
             //Output
-            Console.WriteLine("{0}Antal svenska bokstäver: {1}Antal Å: {2}Antal Ä: {3}Antal Å: {4}", new object[]
+            /*
+            Console.WriteLine(Language());
+            Console.WriteLine("Antal svenska bokstäver: " + TotalCount());
+            Console.WriteLine("Antal Å: " + åCount);
+            Console.WriteLine("Antal Ä: " + äCount);
+            Console.WriteLine("Antal Ö: " + öCount);*/
+            Console.WriteLine("{0}Antal svenska bokstäver: {1}Antal Å: {2}Antal Ä: {3}Antal Ö: {4}", new object[]
             {
                     Language() + Environment.NewLine,
                     TotalCount() + Environment.NewLine,
                     åCount + Environment.NewLine,
                     äCount + Environment.NewLine,
-                    öCount + Environment.NewLine
+                    öCount
             });
+            //Console.ReadKey();
         }
     }
 
@@ -90,6 +97,54 @@ namespace Assignment1
                 "Antal Ä: 1",
                 "Antal Ö: 4"
             }, console.Lines);
+        }
+
+        [TestMethod]
+        public void TestTwo()
+        {
+            FakeConsole console = new FakeConsole("This is not Swedish");
+            Program.Main();
+            CollectionAssert.AreEqual(new[]
+            {
+                "Texten verkar inte vara på svenska",
+                "Antal svenska bokstäver: 0",
+                "Antal Å: 0",
+                "Antal Ä: 0",
+                "Antal Ö: 0"
+            }, console.Lines);
+            console.Dispose();
+        }
+
+        [TestMethod]
+        public void TestThree()
+        {
+            FakeConsole console = new FakeConsole("Hur många ån finns det i en å");
+            Program.Main();
+            CollectionAssert.AreEqual(new[]
+            {
+                "Texten verkar vara på svenska",
+                "Antal svenska bokstäver: 3",
+                "Antal Å: 3",
+                "Antal Ä: 0",
+                "Antal Ö: 0"
+            }, console.Lines);
+            console.Dispose();
+        }
+        
+        [TestMethod]
+        public void TestFour()
+        {
+            FakeConsole console = new FakeConsole("!?¤=%*%#)(?:)");
+            Program.Main();
+            CollectionAssert.AreEqual(new[]
+            {
+                "Texten verkar inte vara på svenska",
+                "Antal svenska bokstäver: 0",
+                "Antal Å: 0",
+                "Antal Ä: 0",
+                "Antal Ö: 0"
+            }, console.Lines);
+            console.Dispose();
         }
     }
 }
