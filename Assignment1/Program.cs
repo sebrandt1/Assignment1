@@ -140,5 +140,21 @@ namespace Assignment1
             }, console.Lines);
             console.Dispose();
         }
+
+        [TestMethod]
+        public void TestFive()
+        {
+            FakeConsole console = new FakeConsole("Sju skÖna sjuksköterskor skÖtte sju sjuka sjömän");
+            Program.Main();
+            CollectionAssert.AreEqual(new[]
+            {
+                "Texten verkar vara på svenska",
+                "Antal svenska bokstäver: 5",
+                "Antal Å: 0",
+                "Antal Ä: 1",
+                "Antal Ö: 4"
+            }, console.Lines);
+            console.Dispose();
+        }
     }
 }
