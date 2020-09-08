@@ -28,13 +28,11 @@ namespace Assignment1
         {
             int åCount = 0,
                 äCount = 0,
-                öCount = 0; //Icke engelska bokstäver är egentligen "bad practice" men det blir lättare så här
-            int TotalCount() => //Deklarerar man totalCount = å + ä + ö så blir den 0 (då alla är deklarerade som 0)
-                åCount + äCount + öCount; //På det här viset returnerar den alltid nuvarande värdena på å ä ö när man callar totalCount()
+                öCount = 0,
+                totalCount = 0; //Icke engelska bokstäver är egentligen "bad practice" men det blir lättare så här
                                           //Alternativt kan man göra totalCount++ i ifsatsen för varje bokstav som dyker upp
-            bool isSwedish() => TotalCount() >= 1; //Om totalCount returnerar 1 eller mer så är språket svenska
 
-            string Language() => isSwedish() ? "Texten verkar vara på svenska" : "Texten verkar inte vara på svenska";
+            string language = "Texten verkar inte vara på svenska"; //defaulta till att den inte är på svenska
             string input;
 
             Console.WriteLine("Skriv in din text: ");
@@ -47,27 +45,34 @@ namespace Assignment1
                 if (input[i] == 'å' || input[i] == 'Å')
                 {
                     åCount++;
+                    totalCount++;
                 }
                 else if (input[i] == 'ä' || input[i] == 'Ä')
                 {
                     äCount++;
+                    totalCount++;
                 }
                 else if (input[i] == 'ö' || input[i] == 'Ö')
                 {
                     öCount++;
+                    totalCount++;
                 }
+            }
+
+            if(totalCount > 0)
+            {
+                language = "Texten verkar vara på svenska";
             }
 
             //Output
             Console.WriteLine("{0}Antal svenska bokstäver: {1}Antal Å: {2}Antal Ä: {3}Antal Ö: {4}", new object[]
             {
-                    Language() + Environment.NewLine,
-                    TotalCount() + Environment.NewLine,
+                    language + Environment.NewLine,
+                    totalCount + Environment.NewLine,
                     åCount + Environment.NewLine,
                     äCount + Environment.NewLine,
                     öCount
             });
-            //Console.ReadKey();
         }
     }
 
