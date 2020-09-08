@@ -1,24 +1,16 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-/* ##Instruktioner##
- * 1. Regeln som ska användas för bedömningen är följande: om texten innehåller åtminstone en "svensk bokstav" (Å, Ä eller Ö) så är den på svenska, annars inte.
- * 2. Både små och stora bokstäver ska ingå i bedömningen.
- * 3. När bedömningen har gjorts ska programmet skriva ut resultatet: huruvida texten är på svenska eller inte.
- * 4. När bedömningen har gjorts ska även antalet svenska bokstäver i texten skrivas ut.
- * 
- * ##Pseudo##
- * 1.1. Skapa en integer swedishCount som plusas för varje svensk bokstav
- * 1.2. Skapa en bool isSwedish som är true om swedishCount >= 1
- * 2. Gör bara en if(x == 'x' || x = 'X')) xCount++; eftersom man INTE får använda sig av stringmetoder (exempelvis x.ToLower().Contains('x'))
- * 3. Ternary: string language = isSwedish ? "Texten är på svenska" : "Texten är INTE på svenska";
- * 3.2. Om man INTE får använda sig av ternary gör bara en enkel if(isSwedish) language = "Texten är på svenska"; else.....
+/* ##Pseudo##
+ * 1 Skapa en integer swedishCount som plusas för varje svensk bokstav
+ * 2 Gör en if(x == 'x' || x = 'X')) xCount++; eftersom man INTE får använda sig av stringmetoder (exempelvis x.ToLower().Contains('x'))
+ * 3 ändra utmatningssträngen beroende på om input innehåller svenska bokstäver eller inte
  * 4. Kan använda dictionary<char, int> för att räkna ihop hur många gånger en bokstav visas i texten
  * 4.1. Kan också använda LINQ; int åCount = input.Count(x => x == 'å' || x == 'Å');
  * 4.2 Eftersom man inte får använda sig av strängmetoder så får vi helt enkelt räkna det med en variabel för varje svensk bokstav
  *      och en for loop + if-sats i for loopen
  *      
- *      Utökning 3: Statistik
+ * ###Utökning 3: Statistik###
  */
 namespace Assignment1
 {
@@ -30,7 +22,6 @@ namespace Assignment1
                 äCount = 0,
                 öCount = 0,
                 totalCount = 0; //Icke engelska bokstäver är egentligen "bad practice" men det blir lättare så här
-                                          //Alternativt kan man göra totalCount++ i ifsatsen för varje bokstav som dyker upp
 
             string language = "Texten verkar inte vara på svenska"; //defaulta till att den inte är på svenska
             string input;
